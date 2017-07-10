@@ -5,6 +5,9 @@ showComment()
 filterCom()
 })
 
+
+let commentList = new CommentList()
+
 function showComment() {
     $('#note-form').on('submit', function(x) {
     x.preventDefault()
@@ -13,6 +16,8 @@ function showComment() {
     $('#text').val('') 
 
     const newCom = new Comment(text)
+
+    commentList.addComment(newCom)
 // debugger
     $('#comments-list').append(newCom.render())
 
@@ -24,9 +29,9 @@ function filterCom() {
      x.preventDefault()
      let input = $('#search-text').val()
      $('#search-text').val('')
+     // commentList.addComment(input)
+     commentList.search(input)
+     commentList.renderSearch()
 
-     let commentList = new CommentList()
-     commentList.addComment(input)
-     $('#comments-list').append(input.renderCom())
    })
 }

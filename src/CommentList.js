@@ -10,18 +10,19 @@ class CommentList {
 
     search(input) {
     this.filterCom = this.comments.filter(x => {
-       return x.includes(input)
+       return x.text.includes(input)
+        // debugger
      })
     }
-
     renderSearch() {
+// debugger
     this.filterCom.map(x => {
-       $('#comments-list').append(x.render())
+       $('#comments-list').html(x.render())
      })
     }
 
-    addComment (text) {
-        const newCom = new Comment(text)
+    addComment (newCom) {
+        // const newCom = new Comment(text)
         this.comments.push(newCom)
     }
 
